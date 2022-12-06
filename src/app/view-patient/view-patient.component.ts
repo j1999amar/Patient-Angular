@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-view-patient',
@@ -6,13 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-patient.component.css'],
 })
 export class ViewPatientComponent {
-  data: any = [
-    {
-      id: 3,
-      patientName: 'patientName',
-      doctor: 'doctor',
-      hospital: 'hospital',
-      contact: 'contact',
-    },
-  ];
+  data: any = [  ]
+  constructor(private api:ApiService){
+    this.api.fetchData().subscribe(
+      (response)=>{
+        this.data=response;
+      }
+    )
+  }
 }

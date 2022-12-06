@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { ViewPatientComponent } from './view-patient/view-patient.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'
 const myRouter:Routes=[{
   path:'',
   component:ViewPatientComponent
@@ -27,7 +28,8 @@ const myRouter:Routes=[{
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(myRouter)
+    RouterModule.forRoot(myRouter),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
