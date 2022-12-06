@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-add-patient',
@@ -6,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-patient.component.css'],
 })
 export class AddPatientComponent {
+  constructor(private api:ApiService, private route:Router){}
+
   patientName = '';
   doctor = '';
   hospital = '';
@@ -18,5 +22,12 @@ export class AddPatientComponent {
       contact: this.contact
     };
     console.log(data)
+    this.api.sendData(data).subscribe(
+      (response)=>{
+        console.log(response)
+      }
+    )
+    this.route.navigate(['/'])
+
   };
 }
